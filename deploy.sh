@@ -30,7 +30,7 @@ IBM_MEMORY=${IBM_MEMORY:-"128M"}
 V2_ID=${V2_ID:-"d007eab8-ac2a-4a7f-287a-f0d50ef08680"}
 V2_PATH=${V2_PATH:-"path"}
 ALTER_ID=${ALTER_ID:-"1"}
-VLESS_EN=${VLESS_EN:-"false"}
+VLESS_EN=${VLESS_EN:-"true"}
 mkdir -p $IBM_APP_NAME
 
 if [ ! -f "./config/v2ray" ]; then
@@ -62,7 +62,7 @@ branch=${GITHUB_REF#refs/heads/}
 if [ $VLESS_EN == "false" ]; then
     {
         echo "#! /bin/bash"
-        echo "wget -Oconfig.json https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$branch/config/config_vmess.json"
+        echo "wget -Oconfig.json https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$branch/config/config_vless.json"
         echo "sed 's/V2_ID/$V2_ID/' config.json -i"
         echo "sed 's/V2_PATH/$V2_PATH/' config.json -i"
         echo "sed 's/ALTER_ID/$ALTER_ID/' config.json -i"
